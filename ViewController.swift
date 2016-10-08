@@ -24,8 +24,10 @@ class ViewController: UIViewController {
         
         if event?.subtype == UIEventSubtype.motionShake {
             
-            let fileLocation = Bundle.main.path(forResource: "saxophone", ofType: "mp3")
-            
+            let soundArray = ["saxophone", "xylophone", "knife_throw", "light_fuse", "rippin_explosion", "arrow_balloon", "big_String"]
+            let randomNumber = Int(arc4random_uniform(UInt32(soundArray.count)))
+            let fileLocation = Bundle.main.path(forResource: soundArray[randomNumber], ofType: "mp3")
+
             do {
                 
                 try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileLocation!))
